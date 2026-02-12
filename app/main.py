@@ -1,14 +1,19 @@
 from fastapi import FastAPI
+from .db import SessionLocal
+from .models import Player
+from .init_db import init
 
 app = FastAPI(title="Chatbot Sword Game API")
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+init()
 
 @app.get("/status")
 def status():
-    return {
-        "gold": 1000,
-        "weapon_level": 1
+    db = SessionLocal()
+    player = db.query(Player).first()
+    result = {
+        "gold": player.gold,
+        "weapon_level": player.weapon_level
     }
+    db.close()
+    return result
