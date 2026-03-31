@@ -2,7 +2,7 @@ import random
 from fastapi import HTTPException
 from fastapi import FastAPI
 from .db import SessionLocal
-from .models import Player
+from .models import Player, UpgradeLog
 from .init_db import init
 
 app = FastAPI(title="Chatbot Sword Game API")
