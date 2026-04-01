@@ -1,6 +1,5 @@
 import random
-from fastapi import HTTPException
-from fastapi import FastAPI
+from fastapi import HTTPException, FastAPI
 from .db import SessionLocal
 from .models import Player, UpgradeLog
 from .init_db import init
